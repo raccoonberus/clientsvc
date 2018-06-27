@@ -13,7 +13,7 @@ public class RegistrationResource {
 
     private final static Logger logger = Logger.getLogger(RegistrationResource.class);
 
-    @Path("/")
+//    @Path("/")
     @GET // TODO: do POST
     @Produces(MediaType.APPLICATION_JSON)
     public RegistrationModel register() {

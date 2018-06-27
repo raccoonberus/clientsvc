@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class JPAHibernateCRUDTest extends JPAHibernateTest {
 
-    @Test
+//    @Test
     public void testPersist_success() {
         String value = "0000 1111 22 33";
         Client client = new Client();
