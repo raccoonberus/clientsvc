@@ -1,40 +1,46 @@
 package com.raccoonberus.clientsvc.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "document")
-@NamedQueries(value = {
-        @NamedQuery(name = "Document.getAll", query = "SELECT d FROM Document d"),
-        @NamedQuery(name = "Document.getByValue", query = "SELECT d FROM Document d WHERE d.value = ?")
-})
-public class Document {
+@Table(name = "contact")
+public class Contact {
 
-    public enum Type {PASSPORT, SNILS}
+    public enum Type {
+        EMAIL, PHONE, MOBILE_PHONE, TELEGRAM
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private long id;
 
     @Column(name = "type", nullable = false)
+    @NotNull
     private Type type;
 
-    @Column(name = "value", unique = true, nullable = false)
+    @Column(name = "value", nullable = false)
+    @NotNull
+    @Size(min = 1)
     private String value;
+
+    private boolean verified = false;
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
-//    @JsonManagedReference
     private Client client;
+
+    public Contact(Type type, String value) {
+        this.type = type;
+        this.value = value;
+    }
 
     public long getId() {
         return id;
     }
 
-    public Document setId(long id) {
+    public Contact setId(long id) {
         this.id = id;
         return this;
     }
@@ -43,7 +49,7 @@ public class Document {
         return type;
     }
 
-    public Document setType(Type type) {
+    public Contact setType(Type type) {
         this.type = type;
         return this;
     }
@@ -52,8 +58,17 @@ public class Document {
         return value;
     }
 
-    public Document setValue(String value) {
+    public Contact setValue(String value) {
         this.value = value;
+        return this;
+    }
+
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public Contact setVerified(boolean verified) {
+        this.verified = verified;
         return this;
     }
 
@@ -61,8 +76,9 @@ public class Document {
         return client;
     }
 
-    public Document setClient(Client client) {
+    public Contact setClient(Client client) {
         this.client = client;
         return this;
     }
+
 }

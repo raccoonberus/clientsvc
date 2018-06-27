@@ -6,8 +6,11 @@
     <persistence-unit name="mnf-pu-test" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>com.raccoonberus.clientsvc.model.Document</class>
+        <class>com.raccoonberus.clientsvc.model.Address</class>
         <class>com.raccoonberus.clientsvc.model.Client</class>
+        <class>com.raccoonberus.clientsvc.model.Contact</class>
+        <class>com.raccoonberus.clientsvc.model.Document</class>
+        <class>com.raccoonberus.clientsvc.model.Name</class>
 
         <properties>
             <!-- Configuring JDBC properties -->
