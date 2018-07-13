@@ -1,12 +1,6 @@
 package com.raccoonberus.clientsvc.web.it;
 
-import com.raccoonberus.clientsvc.model.Client;
-import com.raccoonberus.clientsvc.model.Document;
-import com.raccoonberus.clientsvc.web.model.CommonRespose;
 import org.junit.Test;
-
-import java.util.Date;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -39,7 +33,7 @@ public class DocumentResourceTest extends LocalJerseyTest {
                 .put(Entity.entity(document, MediaType.APPLICATION_JSON));
 
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
-        assertTrue(response.readEntity(CommonRespose.class).isSuccess());*/
+        assertTrue(response.readEntity(CommonResponse.class).isSuccess());*/
     }
 
     @Test

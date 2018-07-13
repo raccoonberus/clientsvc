@@ -4,7 +4,7 @@ import com.raccoonberus.clientsvc.model.Client;
 import com.raccoonberus.clientsvc.model.Contact;
 import com.raccoonberus.clientsvc.model.Name;
 import com.raccoonberus.clientsvc.service.ClientService;
-import com.raccoonberus.clientsvc.web.model.CommonRespose;
+import com.raccoonberus.clientsvc.web.model.CommonResponse;
 import com.raccoonberus.clientsvc.web.model.RegistrationSimpleRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ public class RegistrationResource {
     private ClientService clientService;
 
     @RequestMapping(value = "simple", method = RequestMethod.POST)
-    public CommonRespose simple(RegistrationSimpleRequest request) {
+    public CommonResponse simple(RegistrationSimpleRequest request) {
         Client client = new Client();
         client.getNames()
                 .add(new Name(request.getLastName(), request.getFirstName(), request.getMiddleName()));
@@ -32,7 +32,7 @@ public class RegistrationResource {
 
         clientService.create(client);
 
-        return new CommonRespose(true);
+        return new CommonResponse(true);
     }
 
 }

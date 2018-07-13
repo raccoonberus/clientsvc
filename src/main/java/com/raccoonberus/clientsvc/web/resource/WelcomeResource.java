@@ -1,6 +1,6 @@
 package com.raccoonberus.clientsvc.web.resource;
 
-import com.raccoonberus.clientsvc.web.model.CommonRespose;
+import com.raccoonberus.clientsvc.web.model.CommonResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class WelcomeResource {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public CommonRespose hello() {
+    public CommonResponse hello() {
         String welcomeMsg = "Hello, everyone!<br/>This is client service!<br/>It can collect, validate and sort useful information.";
-        return new CommonRespose(true).setResult(welcomeMsg);
+        return new CommonResponse(true).setResult(welcomeMsg);
     }
 
 }
