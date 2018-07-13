@@ -1,27 +1,19 @@
 package com.raccoonberus.clientsvc.web.model;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class RegistrationSimpleRequest {
 
-    @NotNull
     private String lastName;
 
-    @NotNull
     private String firstName;
 
-    @NotNull
     private String middleName;
 
-    @NotNull
     private Date birthDate;
 
-    @NotNull
     private String email;
 
-    @NotNull
     private String mobilePhone;
 
     public String getLastName() {

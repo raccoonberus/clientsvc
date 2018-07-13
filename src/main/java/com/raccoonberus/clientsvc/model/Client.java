@@ -1,7 +1,5 @@
 package com.raccoonberus.clientsvc.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,7 +27,6 @@ public class Client {
     private List<Address> addresses = new ArrayList<Address>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "client")
-    @JsonBackReference
     private List<Document> documents = new ArrayList<Document>();
 
     public long getId() {

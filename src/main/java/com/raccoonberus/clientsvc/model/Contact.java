@@ -1,8 +1,6 @@
 package com.raccoonberus.clientsvc.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "contact")
@@ -17,12 +15,9 @@ public class Contact {
     private long id;
 
     @Column(name = "type", nullable = false)
-    @NotNull
     private Type type;
 
     @Column(name = "value", nullable = false)
-    @NotNull
-    @Size(min = 1)
     private String value;
 
     private boolean verified = false;

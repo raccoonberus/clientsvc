@@ -1,7 +1,5 @@
 package com.raccoonberus.clientsvc.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 
 @Entity
@@ -27,7 +25,6 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
-//    @JsonManagedReference
     private Client client;
 
     public long getId() {
