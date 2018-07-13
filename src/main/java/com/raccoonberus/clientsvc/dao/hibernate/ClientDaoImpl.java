@@ -2,7 +2,9 @@ package com.raccoonberus.clientsvc.dao.hibernate;
 
 import com.raccoonberus.clientsvc.dao.ClientDao;
 import com.raccoonberus.clientsvc.model.Client;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ClientDaoImpl implements ClientDao {
 
     @Override

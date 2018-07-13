@@ -1,19 +1,15 @@
 package com.raccoonberus.clientsvc.web.resource;
 
-import org.apache.log4j.Logger;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-
-@Path("/")
+@RestController
+@RequestMapping("/")
 public class WelcomeResource {
 
-    private final static Logger logger = Logger.getLogger(WelcomeResource.class);
-
-    @Path("/")
-    @GET
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String hello() {
-        logger.info("show hello message");
         return "Hello, everyone!<br/>This is client service!<br/>It can collect, validate and sort useful information.";
     }
 

@@ -4,31 +4,22 @@ import com.raccoonberus.clientsvc.model.Client;
 import com.raccoonberus.clientsvc.model.Contact;
 import com.raccoonberus.clientsvc.model.Name;
 import com.raccoonberus.clientsvc.service.ClientService;
-import com.raccoonberus.clientsvc.service.ClientServiceImpl;
 import com.raccoonberus.clientsvc.web.model.CommonRespose;
 import com.raccoonberus.clientsvc.web.model.RegistrationSimpleRequest;
-import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-
-@Path("/registration")
+@RestController
+@RequestMapping("registration")
 public class RegistrationResource {
 
-    private final static Logger logger = Logger.getLogger(RegistrationResource.class);
+    @Autowired
+    private ClientService clientService;
 
-//    @Inject
-    private ClientService clientService
-            = new ClientServiceImpl();
-
-    @Path("/simple")
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "simple", method = RequestMethod.POST)
     public CommonRespose simple(RegistrationSimpleRequest request) {
-        logger.info("register method call");
-
         Client client = new Client();
         client.getNames()
                 .add(new Name(request.getLastName(), request.getFirstName(), request.getMiddleName()));
