@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
->
-    <import resource="classpath:/META-INF/spring/datasource-tx-jpa.xml"/>
-</beans>

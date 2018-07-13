@@ -1,25 +1,10 @@
 version: '3'
 
 services:
-  app:
-    image: jboss/wildfly:12.0.0.Final
-    restart: always
-    ports:
-      - "8180:8080"
-      - "8190:9090"
-    volumes:
-      - ./target/:/opt/jboss/wildfly/standalone/deployments/
-    env_file:
-      - docker/.env
-
   db:
     image: postgres:9.6
     ports:
       - "35445:5432"
-#    environment:
-#      POSTGRES_DB: ${DB_NAME}
-#      POSTGRES_USER: ${DB_USERNAME}
-#      POSTGRES_PASSWORD: ${DB_PASSWORD}
     env_file:
       - docker/.env
 

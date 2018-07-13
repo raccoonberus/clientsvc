@@ -6,7 +6,8 @@ import java.util.List;
 public class CommonRespose {
 
     private boolean success;
-    private List<String> errors = new ArrayList<String>();
+    private Object result;
+    private List<String> errors = new ArrayList<>();
 
     public CommonRespose() {
     }
@@ -21,6 +22,15 @@ public class CommonRespose {
 
     public CommonRespose setSuccess(boolean success) {
         this.success = success;
+        return this;
+    }
+
+    public Object getResult() {
+        return result;
+    }
+
+    public CommonRespose setResult(Object result) {
+        this.result = result;
         return this;
     }
 
