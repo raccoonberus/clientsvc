@@ -15,24 +15,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("registration")
 public class RegistrationResource {
 
-    @Autowired
     private ClientService clientService;
 
     @RequestMapping(value = "simple", method = RequestMethod.POST)
     public CommonResponse simple(RegistrationSimpleRequest request) {
         Client client = new Client();
-        client.getNames()
-                .add(new Name(request.getLastName(), request.getFirstName(), request.getMiddleName()));
+        client.addName(new Name(request.getLastName(), request.getFirstName(), request.getMiddleName()));
 
         if (null != request.getEmail() && !"".equals(request.getEmail()))
-            client.getContacts().add(new Contact(Contact.Type.EMAIL, request.getEmail()));
+            client.addContact(new Contact(Contact.Type.EMAIL, request.getEmail()));
 
         if (null != request.getMobilePhone() && !"".equals(request.getMobilePhone()))
-            client.getContacts().add(new Contact(Contact.Type.MOBILE_PHONE, request.getMobilePhone()));
+            client.addContact(new Contact(Contact.Type.MOBILE_PHONE, request.getMobilePhone()));
 
         clientService.create(client);
 
         return new CommonResponse(true);
     }
 
+    @Autowired
+    public void setClientService(ClientService clientService) {
+        this.clientService = clientService;
+    }
 }
