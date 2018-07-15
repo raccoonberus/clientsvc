@@ -41,7 +41,7 @@ public class RegistrationResourceTest {
     }
 
     @Test
-    public void echo() throws Exception {
+    public void simple() throws Exception {
         URL resource = Resources.getResource("META-INF/json/registration-simple.json");
         String body = Resources.toString(resource, Charsets.UTF_8);
 
