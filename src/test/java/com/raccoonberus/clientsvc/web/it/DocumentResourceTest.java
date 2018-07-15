@@ -6,11 +6,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class DocumentResourceTest extends LocalJerseyTest {
+public class DocumentResourceTest {
 
     @Test
-    public void verification()
-    {
+    public void verification() {
         /*String val = "983hf984hf94389384hf9348fhf4398488489389483";
 
         Client client = new Client();
@@ -37,8 +36,7 @@ public class DocumentResourceTest extends LocalJerseyTest {
     }
 
     @Test
-    public void verificationNonexistent()
-    {
+    public void verificationNonexistent() {
         /*String val = "878787788778 567890";
         Document document = new Document().setType(Document.Type.PASSPORT).setValue(val);
 

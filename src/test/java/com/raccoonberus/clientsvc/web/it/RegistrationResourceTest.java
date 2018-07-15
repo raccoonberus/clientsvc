@@ -25,12 +25,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:test-context.xml"}, inheritLocations = false)
-public class CustomerRestServiceTest {
+public class RegistrationResourceTest {
 
     private MockMvc mockMvc;
-
-//    @Inject
-//    private RegistrationResource registrationResource;
 
     @Autowired
     private WebApplicationContext wac;
@@ -39,18 +36,12 @@ public class CustomerRestServiceTest {
     public void setup() {
         mockMvc = MockMvcBuilders
                 .webAppContextSetup(wac)
-//                .apply(SecurityMockMvcConfigurers.springSecurity())
                 .alwaysDo(print())
                 .build();
-
-//        mockMvc = MockMvcBuilders.standaloneSetup(lockController).apply(springSecurity()).build();
     }
 
     @Test
     public void echo() throws Exception {
-
-//        this.mockMvc = MockMvcBuilders.standaloneSetup(new RegistrationResource()).build();
-
         URL resource = Resources.getResource("META-INF/json/registration-simple.json");
         String body = Resources.toString(resource, Charsets.UTF_8);
 
