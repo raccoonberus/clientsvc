@@ -41,14 +41,11 @@ public class ClientDaoImpl implements ClientDao {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Client findByContact(String contact) {
-        try {
-            return (Client) em.createQuery("FROM Client AS client " +
-                    "JOIN client.contacts AS contact " +
-                    "WHERE contact.value = :contact").setParameter("contact", contact)
-                    .getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
+        return (Client) em.createQuery("FROM Client AS client " +
+                "JOIN client.contacts AS contact " +
+                "WHERE contact.value = :contact").setParameter("contact", contact)
+                .getResultList().stream().findFirst().orElse(null);
     }
 }
