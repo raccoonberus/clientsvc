@@ -5,8 +5,12 @@ services:
     image: postgres:9.6
     ports:
       - "35445:5432"
-    env_file:
-      - docker/.env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+#    env_file:
+#      - docker/.env
 
 volumes:
   db_data:

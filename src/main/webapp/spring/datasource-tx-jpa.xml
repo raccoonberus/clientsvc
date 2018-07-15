@@ -31,7 +31,7 @@
         <property name="entityManagerFactory" ref="emf"/>
     </bean>
 
-    <tx:annotation-driven/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="emf"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -47,12 +47,13 @@
                 <prop key="hibernate.jdbc.fetch_size">50</prop>
                 <prop key="hibernate.jdbc.batch_size">10</prop>
                 <prop key="hibernate.jdbc.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
     </bean>
 
     <context:annotation-config/>
-    <jpa:repositories base-package="com.raccoonberus.clientsvc.dao"
+    <jpa:repositories base-package="com.raccoonberus.clientsvc"
                       transaction-manager-ref="transactionManager"
                       entity-manager-factory-ref="emf"/>
 

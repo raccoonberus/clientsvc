@@ -18,16 +18,16 @@ public class Client {
     private Date birthDate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "client")
-    private List<Name> names = new ArrayList<Name>();
+    private List<Name> names = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "client")
-    private List<Contact> contacts = new ArrayList<Contact>();
+    private List<Contact> contacts = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "client")
-    private List<Address> addresses = new ArrayList<Address>();
+    private List<Address> addresses = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "client")
-    private List<Document> documents = new ArrayList<Document>();
+    private List<Document> documents = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -56,12 +56,24 @@ public class Client {
         return this;
     }
 
+    public Client addName(Name name) {
+        name.setClient(this);
+        this.names.add(name);
+        return this;
+    }
+
     public List<Contact> getContacts() {
         return contacts;
     }
 
     public Client setContacts(List<Contact> contacts) {
         this.contacts = contacts;
+        return this;
+    }
+
+    public Client addContact(Contact contact) {
+        contact.setClient(this);
+        this.contacts.add(contact);
         return this;
     }
 
@@ -74,12 +86,24 @@ public class Client {
         return this;
     }
 
+    public Client addAddress(Address address) {
+        address.setClient(this);
+        this.addresses.add(address);
+        return this;
+    }
+
     public List<Document> getDocuments() {
         return documents;
     }
 
     public Client setDocuments(List<Document> documents) {
         this.documents = documents;
+        return this;
+    }
+
+    public Client addDocument(Document document) {
+        document.setClient(this);
+        this.documents.add(document);
         return this;
     }
 }
